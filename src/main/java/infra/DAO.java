@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import modelo.umpraum.Cliente;
+
 public class DAO<E> {
 
 	 private static EntityManagerFactory emf;
@@ -74,6 +76,10 @@ public class DAO<E> {
 	 
 	 public void fechar() {
 		 em.close();
+	 }
+	 
+	 public E ObterPorID(Object i) {
+		 return em.find(classe, i);
 	 }
 	 
 }
