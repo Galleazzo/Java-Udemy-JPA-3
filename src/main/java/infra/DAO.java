@@ -82,4 +82,15 @@ public class DAO<E> {
 		 return em.find(classe, i);
 	 }
 	 
+	 
+	 public List<E> consultas(String nomeConsulta, Object... params){
+		 TypedQuery<E> query = em.createNamedQuery(nomeConsulta, classe);
+		 
+		 for(int i = 0 ; i < params.length ; i += 2) {
+			 query.setParameter(params[1].toString(), params[i + 1]);
+		 }
+		 
+		 return query.getResultList();
+	 }
+	 
 }
